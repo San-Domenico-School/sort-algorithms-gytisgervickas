@@ -69,25 +69,27 @@ public class Dealer extends Actor
      * cards from the shuffled list and adding them to the sorted list.     
     **/
     
-    /* In this space write the pseudocode for your selection sort
-     * 
-     * 
+    /* Using the for each loops compare two cards and the one that has the smallest value
+     * will be sorted to the sorted list. Usually it will be from smallest to the biggest 
+     * cards since the lower number switches with a bigger one.
      * 
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
-        //put sort algorithm here
+        
+        
         
         return selectionSort;
     }
     
-    /* In this space write the pseudocode for your insertion sort
-     * 
-     * 
+    /* Using the for each loops compare every new card to the beginning, pretty similar like we
+     * did in a classroom asking "Am I bigger?". Until the lower number is found, the bigger 
+     * cards go in front of it.
      * 
      */
     private Card[] insertionSort(Card[] arr, int n)
     {
+        
         
         //put sort algorithm here
         
