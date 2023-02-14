@@ -76,11 +76,33 @@ public class Dealer extends Actor
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
+        int min_index = 0;
         
+        Card temp;
         
-        
-        return selectionSort;
+        for(int i = 0; i < arr.length - 1; i++)
+        {
+            int minElement = i;
+            
+            for(int k = i + 1; k < arr.length; k++)
+            {
+                if(arr[k].getValue() < arr[minElement].getValue())
+                {
+                    minElement = k;
+                }
+               
+               
+            }
+            
+            temp = arr[minElement];
+            
+            arr[minElement] = arr[i];
+            
+            arr[i] = temp;
+        }            
+          return selectionSort;    
     }
+    
     
     /* Using the for each loops compare every new card to the beginning, pretty similar like we
      * did in a classroom asking "Am I bigger?". Until the lower number is found, the bigger 
@@ -89,9 +111,22 @@ public class Dealer extends Actor
      */
     private Card[] insertionSort(Card[] arr, int n)
     {
+        Card temp;
         
-        
-        //put sort algorithm here
+        for(int i = 0; i < arr.length; i++)
+        {
+            for(int k = 0; k < arr.length; k++)
+            {
+                if(arr[i].getValue() < arr[k].getValue())
+                {
+                    temp = arr[i];
+                    arr[i] = arr[k];
+                    arr[k] = temp;
+                }
+
+            }
+           
+        }
         
         return insertionSort;
     }
