@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * should then implement the sort method at the botton of this class to see 
  * if they understanding basic ArrayList sort algorithms.
  * 
- * @author Bruce Gustin
- * @version Feb 8, 2023
+ * @author Gytis Gervickas
+ * @version Feb 14, 2023
  */
 
 public class Dealer extends Actor
@@ -131,17 +131,93 @@ public class Dealer extends Actor
         return insertionSort;
     }
     
-    /* In this space write the pseudocode for your merge sort
-     * 
-     * 
-     * 
-     */
-    private Card[] mergeSort(Card[] arr, int n)
-     {
+    /* Merge sort divides the array into two halves, and sort each half by recursively 
+    * dividing it into halves and arrange them, then merge the sorted result in the end.
+    */
+    
+    public Card[] mergeSort(Card[] a, int n)
+    {
+        /* What is the purpose of the following if statement?
+        *“n” represents the length of the card deck, which states that if there is only
+        *one card in the deck, then we do not have to sort it, just return it.
+        */
+        if (n < 2) 
+        {
+            return a;
+        }
         
-        //put sort algorithm here
+        // Explain the following 3 lines.
+        int mid = n / 2;
+        Card[] l = new Card[mid];
+        Card[] r = new Card[n - mid];
+    
+        /* What does this for-loop do?
+         * This is duplicating the value from the mother array to the left array.
+        */
+        for (int i = 0; i < mid; i++) 
+            {
+            l[i] = a[i];
+            }
+   
+        /* What does this for-loop do?
+         * Just as the for loop above, it is duplicating the values from the mother array 
+         * to the right array.
+         */
+        for (int i = mid; i < n; i++) 
+            {
+            r[i - mid] = a[i];
+            }
         
-        return mergeSort;
+        /* What is the purpose of the next two lines?  
+         * 
+         * Why are they required?
+         * 
+        */
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+    
+        // What is the goal of this return statement, when is it      
+        // executed, and what exactly is getting returned?
+        return merge(a, l, r, mid, n - mid);
+    }
+ 
+    // Write here what merge does.
+    public Card[] merge(Card[] a, Card[] l, Card[] r, int left, int right) 
+    { 
+        // Why are these 3 ints declared and assigned zeros?
+        int i = 0, j = 0, k = 0;
+        
+        // What is this while loop doing?
+        while (i < left && j < right) 
+        {
+            // What is this if/else block doing?
+            if (l[i].getValue() <= r[j].getValue()) 
+            {
+                a[k++] = l[i++];
+            }
+            else 
+            {
+                a[k++] = r[j++];
+            }
+        }
+     
+        // What are these two while loops doing and why are they needed.  
+        // Doesn't the above while loop do the same thing?
+        while (i < left)
+        {
+            a[k++] = l[i++];
+        }
+        
+        while (j < right)
+        {
+            a[k++] = r[j++];
+        }
+        
+        // What gets returned here?
+        return a;
     }
 }
+
+
+
 
