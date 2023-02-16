@@ -146,7 +146,9 @@ public class Dealer extends Actor
             return a;
         }
         
-        // Explain the following 3 lines.
+        /* Explain the following 3 lines.
+        *Creating the left and right card arrays.
+        */
         int mid = n / 2;
         Card[] l = new Card[mid];
         Card[] r = new Card[n - mid];
@@ -160,8 +162,7 @@ public class Dealer extends Actor
             }
    
         /* What does this for-loop do?
-         * Just as the for loop above, it is duplicating the values from the mother array 
-         * to the right array.
+         * This is duplicating the value from the mother array to the right array.
          */
         for (int i = mid; i < n; i++) 
             {
@@ -169,28 +170,33 @@ public class Dealer extends Actor
             }
         
         /* What is the purpose of the next two lines?  
-         * 
+         * Runs the left and right array through this process again, spliting them in half.
          * Why are they required?
-         * 
+         * They are required so the arrays split into the smallest amount of cards in it.
         */
         mergeSort(l, mid);
         mergeSort(r, n - mid);
     
-        // What is the goal of this return statement, when is it      
+        // What is the goal of this return statement, when is it   
         // executed, and what exactly is getting returned?
+        // It will return the sorted list, using the merge method to combine the smallest groups.
         return merge(a, l, r, mid, n - mid);
     }
  
     // Write here what merge does.
+    // It combines small groups once again into the sorted bigger list. Returns the sorted list.
     public Card[] merge(Card[] a, Card[] l, Card[] r, int left, int right) 
     { 
         // Why are these 3 ints declared and assigned zeros?
+        // It is used as indexes in the while loop.
         int i = 0, j = 0, k = 0;
         
         // What is this while loop doing?
+        //Compares the first card of the left and right array. Sets it the lower card to the first card in an array.
         while (i < left && j < right) 
         {
             // What is this if/else block doing?
+            //If l[i] is less than r[j], sets the first card of a to l[i], if not, sets to r[j].
             if (l[i].getValue() <= r[j].getValue()) 
             {
                 a[k++] = l[i++];
@@ -202,7 +208,9 @@ public class Dealer extends Actor
         }
      
         // What are these two while loops doing and why are they needed.  
+        //Combines the remaining cards from the two groups. Needed because method won't always do it.
         // Doesn't the above while loop do the same thing?
+        //No, one of them will run once there is only cards left in one group.
         while (i < left)
         {
             a[k++] = l[i++];
@@ -214,6 +222,7 @@ public class Dealer extends Actor
         }
         
         // What gets returned here?
+        //Returns the sorted list of the two groups that were given to us as paremeters.
         return a;
     }
 }
